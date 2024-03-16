@@ -1,0 +1,85 @@
+{
+    "machineName": "Respironics V60 Ventilator",
+    "modules": [
+      {
+        "id": 1,
+        "moduleName": "Introduction and General Information",
+        "estimatedTime": "5",
+        "totalTopics": "1",
+        "shortModuleDescription": "An overview of the Respironics V60 Ventilator, its features, indications, contraindications, and safety information.",
+        "ModuleContent": [
+          {
+            "id": 1,
+            "title": "Introduction and General Information",
+            "titleDescription": "An overview of the Respironics V60 Ventilator",
+            "image": "",
+            "content": "The Respironics V60 Ventilator is an assist ventilator intended to augment breathing in spontaneously breathing patients who require mechanical ventilation. It is designed for pediatric to adult patients in hospital or institutional settings. \n\nKey points about the V60 Ventilator:\n\n- It offers noninvasive and invasive ventilatory support with conventional pressure modes like CPAP, PCV, S/T as well as the volume-targeted AVAPS mode. \n- The Auto-Trak Sensitivity feature automatically adjusts to maintain optimum patient-ventilator synchrony in the presence of leaks.\n- It has an ergonomic design with a color touchscreen and navigation ring for easy access to settings and monitored parameters.\n- Operator-adjustable and non-adjustable alarms help ensure patient safety.  \n- It uses AC power with an optional internal backup battery.\n- High-pressure oxygen and an internal blower provide the gas delivery.\n\nThe ventilator is contraindicated for patients lacking spontaneous respiratory drive, inability to maintain airway patency or clear secretions, at risk of aspiration, with untreated air leaks, or certain other conditions.\n\nPotential side effects include discomfort, skin irritation, conjunctivitis, gastric distention.  Precautions should be taken to minimize CO2 rebreathing by using appropriate EPAP pressures, exhalation times, and monitoring.\n\nConsult the user manual for complete safety information before operating the ventilator. Only masks, circuits and accessories recommended by Respironics should be used to ensure proper performance and patient safety."
+          }
+        ]
+      },
+      {
+        "id": 2,
+        "moduleName": "Setup and Pre-Use Checks",
+        "estimatedTime": "5",
+        "totalTopics": "1",
+        "shortModuleDescription": "Instructions for setting up the V60 Ventilator and performing necessary preoperational checks before patient use.",
+        "ModuleContent": [
+          {
+            "id": 1,
+            "title": "Setup and Pre-Use Checks",
+            "titleDescription": "Instructions for setting up the V60 Ventilator",
+            "image": "",
+            "content": "Proper setup is critical before using the V60 Ventilator on a patient:\n\n1. Check that you have the appropriate patient circuit, exhalation valve, main flow bacteria filter, and patient interface. Install the circuit.\n\n2. Connect to a grounded AC outlet. Verify battery charge if the optional backup battery is installed. The ventilator will switch to battery power without interruption if AC fails.\n\n3. Connect to a high-pressure oxygen source that can deliver 100% O2 at 40-87 psig. Use an O2 monitor to verify delivered O2 concentration. \n\n4. Power on the ventilator and allow it to complete the self-test. Verify you hear the backup and primary alarm tones.\n\n5. Select the proper mask type and exhalation port in the ventilator menu to enable accurate leak and volume monitoring.\n\n6. Perform the Preoperational Checks before connecting to a patient:\n- Verify alarms, monitored data, and maneuvers using a test lung\n- Test high pressure, low pressure, disconnect, and occlusion alarms\n- Return settings to institutional defaults after testing\n\n7. Set the desired mode, control settings and alarm limits. \n\n8. Connect to patient and begin ventilation, monitoring closely.\n\nAlways have an alternate means of ventilation available. If any preoperational tests fail, do not use the ventilator until it is serviced. \n\nRespond immediately to high priority alarms to ensure patient safety. Consult the user manual for recommended actions.\n\nWith proper setup and monitoring, the V60 Ventilator can provide safe and effective ventilatory support to indicated patients."
+          }
+        ]
+      },
+      {
+        "id": 3,
+        "moduleName": "Ventilation Modes and Settings",
+        "estimatedTime": "5",
+        "totalTopics": "1",
+        "shortModuleDescription": "A description of the ventilation modes and settings available on the V60 Ventilator and their clinical application.",
+        "ModuleContent": [
+          {
+            "id": 1,
+            "title": "Ventilation Modes and Settings",
+            "titleDescription": "A description of the ventilation modes and settings available on the V60 Ventilator",
+            "image": "",
+            "content": "The V60 Ventilator offers several ventilation modes to provide positive pressure support:\n\nCPAP - Provides a constant pressure with each breath initiated by the patient. Flow cycles based on patient effort. The C-Flex option lowers pressure at the start of exhalation for comfort.\n\nS/T - Provides a backup rate with pressure support. Patient-triggered breaths cycle based on effort. Time-triggered breaths are delivered at the set inspiratory time. IPAP, EPAP, Rate, Ti are set.\n\nPCV - All breaths are given at the set pressure control level with set rate and inspiratory time, but can be triggered by the patient or ventilator. No pressure support.\n\nAVAPS - Automatically adjusts pressure support within Min/Max limits to achieve a target tidal volume. Provides a set rate with patient-triggered pressure supported breaths. \n\nClinicians can adjust rise time, O2%, and enable a pressure ramp. Auto-Trak automatically manages triggering and cycling.\n\nAlarm settings for high/low minute volume, rate, tidal volume, and inspiratory pressure help maintain patient safety. It is important to avoid setting limits too extreme to render alarms ineffective.\n\nWhile ventilating a patient, key parameters are monitored:\n- PIP, EPAP, O2%\n- Respiratory Rate, I:E Ratio \n- Tidal Volume, Minute Ventilation\n- Patient Leak, % Patient Triggered\nWaveforms of pressure, flow and volume are displayed.\n\nThe V60's mode options, control settings, alarms, and monitoring provide flexibility to support a range of patient conditions. Understanding the modes and monitored data is critical for safe and effective patient management."
+          }
+        ]
+      },
+      {
+        "id": 4,
+        "moduleName": "Alarms and Troubleshooting",
+        "estimatedTime": "5",
+        "totalTopics": "1",
+        "shortModuleDescription": "An overview of the V60 Ventilator's alarm system and guidance for responding to and troubleshooting alarms.",
+        "ModuleContent": [
+          {
+            "id": 1,
+            "title": "Alarms and Troubleshooting",
+            "titleDescription": "An overview of the V60 Ventilator's alarm system",
+            "image": "",
+            "content": "The V60 Ventilator provides a comprehensive system of alarms to alert clinicians to conditions requiring attention.  \n\nHigh Priority alarms signal conditions that may compromise safe ventilation and require immediate response, such as:\n- Patient Circuit Disconnect or Occlusion\n- High or Low Inspiratory Pressure\n- High or Low Minute Ventilation\n- Apnea\n- Low Internal Battery\n\nMedium Priority alarms indicate issues that require prompt assessment but may not be immediately compromising, such as High Respiratory Rate or Tidal Volume.\n\nInformational Messages provide important information but do not sound an audible alarm.\n\nIf a critical malfunction impacts safe ventilation, a Vent Inoperative alarm occurs, shutting down the ventilator.  Backup ventilation must be used immediately.\n\nClinicians should respond quickly to alarms, assessing the patient first and providing any needed support. The alarm message can then guide troubleshooting. Common issues include:\n\n- Leak, disconnect, or obstruction in the patient circuit \n- Patient coughing, breathing irregularly, or fighting the ventilator\n- Improper ventilator settings \n- Issues with O2 or power supply\n\nThe alarm can be silenced for 2 minutes while addressing the issue. Some alarms self-reset when resolved while others require manual reset.\n\nIf alarms persist, remove the ventilator from use and contact service personnel. Never set alarm limits to extreme values that could prevent alarms from activating.\n\nBy promptly responding to alarms with patient assessment and troubleshooting, clinicians can minimize interruptions to ventilation and maintain patient safety."
+          }
+        ]
+      },
+      {
+        "id": 5,
+        "moduleName": "Maintenance and Cleaning",
+        "estimatedTime": "5",
+        "totalTopics": "1",
+        "shortModuleDescription": "Recommendations for cleaning, preventive maintenance, and care of the V60 Ventilator to ensure proper function.",
+        "ModuleContent": [
+          {
+            "id": 1,
+            "title": "Maintenance and Cleaning",
+            "titleDescription": "Recommendations for cleaning, preventive maintenance, and care of the V60 Ventilator",
+            "image": "",
+            "content": "Proper care and preventive maintenance are essential to keep the V60 Ventilator functioning safely and accurately.\n\nBefore cleaning, power down and disconnect from AC power. The exterior surfaces can be wiped with a soft cloth dampened with soapy water, 10% bleach, hydrogen peroxide, isopropyl alcohol or a germicidal wipe. Avoid excess moisture.\n\nClean the touchscreen with a soft cloth and isopropyl alcohol or glass cleaner. Avoid dripping liquid and do not use abrasive cleaners that could damage the screen.\n\nThe patient circuit, exhalation valve, masks and humidifier should be cleaned according to their individual Instructions for Use. Inspect for damage and replace as needed.   \n\nThe main flow bacteria filter should be replaced between patients and at regular intervals per the manufacturer's guidelines to prevent contamination.\n\nOn a monthly basis, inspect the cooling fan filter on the back of the ventilator for dust and debris. Remove and wash or replace if dirty. \n\nInspect the air inlet filter at least every 6 months and replace if needed. Only use Respironics approved filters.\n\nIf the optional internal backup battery is installed, have it inspected yearly and replaced as needed by qualified service personnel.\n\nContact Respironics for any other service or repair needs. Preventive maintenance not described in the manual should only be performed by authorized technicians.\n\nWith consistent care and maintenance according to the recommended schedule, the V60 Ventilator can provide reliable ventilation support. Always have alternate means of ventilation available in case of unexpected device malfunction."
+          }
+        ]
+      }
+    ]
+  }

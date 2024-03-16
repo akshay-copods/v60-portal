@@ -13,16 +13,18 @@
     <br>
     <br>
     <textarea style="width: 300px; height: 150px;" id="resultText" placeholder="Your PDF text will appear here..."></textarea>
-    <pre class="prettyprint lang-json" id="resultJson">
-
-      </pre>
+    <pre class="prettyprint lang-json" id="resultJson"></pre>
+    <pre class="prettyprint lang-json" id="resultAssessmentJson"></pre>
 
     <script>
         const inpFile = document.getElementById("inpFile");
         const btnUpload = document.getElementById("btnUpload");
         const resultText = document.getElementById("resultText");
         const resultJson = document.getElementById("resultJson");
+        const resultAssessmentJson = document.getElementById("resultAssessmentJson");
+
         resultJson.textContent = "Your JSON will appear here...";
+        resultAssessmentJson.textContent = "Your Assessment JSON will appear here...";
         btnUpload.addEventListener("click", () => {
             const formData = new FormData();
 
@@ -47,6 +49,17 @@
                     return response.text();
                 }).then(extractedJson => {
                     resultJson.textContent = extractedJson
+                });
+                fetch("/extract-assessment", {
+                    method: "post",
+                    headers : {
+                        'Content-Type': 'application/json'
+                    },
+                    body:JSON.stringify({ extractedText})
+                }).then(response => {
+                    return response.text();
+                }).then(extractedAssessmentJson => {
+                    resultAssessmentJson.textContent = extractedAssessmentJson
                 });
             });
         });

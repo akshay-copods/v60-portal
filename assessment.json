@@ -1,0 +1,132 @@
+{
+    "assessment": {
+      "estimatedTime": "20",
+      "questions": [
+        {
+          "id": "1",
+          "question": "Which of the following is NOT a ventilation mode offered by the Respironics V60 Ventilator?",
+          "difficulty": "easy",
+          "info": "The V60 Ventilator offers CPAP, S/T, PCV, and AVAPS modes, but does not have a VCV (Volume Control Ventilation) mode.",
+          "options": [
+            {
+              "id": "a",
+              "option": "CPAP"
+            },
+            {
+              "id": "b",
+              "option": "S/T"
+            },
+            {
+              "id": "c",
+              "option": "PCV"
+            },
+            {
+              "id": "d",
+              "option": "VCV"
+            }
+          ],
+          "answer": "d"
+        },
+        {
+          "id": "2",
+          "question": "What should you do if any of the preoperational checks fail before using the V60 Ventilator on a patient?",
+          "difficulty": "medium",
+          "info": "If any preoperational tests fail, the ventilator should not be used on a patient until it is serviced to ensure safe and proper functioning.",
+          "options": [
+            {
+              "id": "a",
+              "option": "Proceed with using the ventilator but monitor closely"
+            },
+            {
+              "id": "b",
+              "option": "Do not use the ventilator until it is serviced"
+            },
+            {
+              "id": "c",
+              "option": "Restart the ventilator and rerun the checks"
+            },
+            {
+              "id": "d",
+              "option": "Adjust settings and retest"
+            }
+          ],
+          "answer": "b"
+        },
+        {
+          "id": "3",
+          "question": "Which of the following is a high priority alarm on the V60 Ventilator?",
+          "difficulty": "easy",
+          "info": "A Patient Circuit Disconnect alarm is a high priority alarm on the V60 Ventilator because it signals a condition that may severely compromise ventilation and requires immediate response.",
+          "options": [
+            {
+              "id": "a",
+              "option": "Patient Circuit Disconnect"
+            },
+            {
+              "id": "b",
+              "option": "High Respiratory Rate"
+            },
+            {
+              "id": "c",
+              "option": "High Tidal Volume"
+            },
+            {
+              "id": "d",
+              "option": "Informational Message"
+            }
+          ],
+          "answer": "a"
+        },
+        {
+          "id": "4",
+          "question": "How often should the cooling fan filter on the V60 Ventilator be inspected for dust and debris?",
+          "difficulty": "hard",
+          "info": "The cooling fan filter on the back of the V60 Ventilator should be inspected monthly for dust and debris accumulation and cleaned or replaced if needed.",
+          "options": [
+            {
+              "id": "a",
+              "option": "Daily"
+            },
+            {
+              "id": "b",
+              "option": "Weekly"
+            },
+            {
+              "id": "c",
+              "option": "Monthly"
+            },
+            {
+              "id": "d",
+              "option": "Yearly"
+            }
+          ],
+          "answer": "c"
+        },
+        {
+          "id": "5",
+          "question": "Which of the following parameters is NOT directly set by the clinician in AVAPS mode on the V60 Ventilator?",
+          "difficulty": "medium",
+          "info": "In AVAPS mode, the V60 automatically adjusts pressure support within set Min/Max limits to achieve a target tidal volume. The clinician does not directly set the pressure support level.",
+          "options": [
+            {
+              "id": "a",
+              "option": "Respiratory rate"
+            },
+            {
+              "id": "b",
+              "option": "IPAP Min/Max"
+            },
+            {
+              "id": "c",
+              "option": "Tidal volume target"
+            },
+            {
+              "id": "d",
+              "option": "Pressure support level"
+            }
+          ],
+          "answer": "d"
+        }
+      ]
+    }
+  }
