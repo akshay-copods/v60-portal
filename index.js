@@ -8,14 +8,14 @@ require('dotenv').config()
 const app = express();
 app.use(bodyParser.urlencoded({ extended: true }))
 app.use(bodyParser.json())
-
+const CLAUDE_MODEL ="claude-3-haiku-20240307"
 const anthropic = new Anthropic({
     apiKey: process.env.CLAUDE_API_KEY, // defaults to process.env["ANTHROPIC_API_KEY"]
   });
   async function callClaude(text) {
-    const prompt =  `Create 5 training modules, where each module should be at least 250 words from this text ${text}`
+    const prompt =  `Create 5 training modules, where each module should be at least 350 words from this text ${text}`
     const msg = await anthropic.messages.create({
-        model: "claude-3-opus-20240229",
+        model: CLAUDE_MODEL,
         max_tokens: 3500,
         messages: [{ role: "user", content: prompt }],
       });
@@ -46,8 +46,8 @@ const anthropic = new Anthropic({
     ]
   }
   `
-  const ASSESSMENT_JSON = `
-  "assessment": {
+  const ASSESSMENT_JSON =`{ 
+  "assessments": [{
     "estimatedTime": "estimated time in minutes to complete the assessment",
     "questions": [
       {
@@ -64,15 +64,15 @@ const anthropic = new Anthropic({
         "answer": "Correct option id"
       }
     ]
-  }`
-  
+  }]}`
+ 
   async function callClaudeForJson(text) {
     const prompt = `Convert the given content into JSON format. JSON format should be in the following structure: ${MODULE_JSON}
     Just return JSON and don't send any other message.
      
     Here is the text to convert in JSON: ${text}`
     const msg = await anthropic.messages.create({
-        model: "claude-3-opus-20240229",
+        model: CLAUDE_MODEL,
         max_tokens: 3500,
         messages: [{ role: "user", content: prompt }],
       });
@@ -85,7 +85,7 @@ const anthropic = new Anthropic({
      
     Here is the text to convert in JSON: ${text}`
     const msg = await anthropic.messages.create({
-        model: "claude-3-opus-20240229",
+        model: CLAUDE_MODEL,
         max_tokens: 3500,
         messages: [{ role: "user", content: prompt }],
       });
