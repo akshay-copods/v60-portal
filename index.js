@@ -13,11 +13,11 @@ const anthropic = new Anthropic({
     apiKey: process.env.CLAUDE_API_KEY, // defaults to process.env["ANTHROPIC_API_KEY"]
   });
   async function callClaude(text) {
-    const prompt =  `Create 5 training modules, where each module should be at least 400 words from this text ${text}`
+    const prompt =  `Create 5 training modules, where each module should be at least 250 words from this text ${text}`
     const msg = await anthropic.messages.create({
         model: "claude-3-sonnet-20240229",
         max_tokens: 2500,
-        messages: [{ role: "user", content: "Hi" }],
+        messages: [{ role: "user", content: prompt }],
       });
       console.log(msg);
       return msg;
@@ -68,7 +68,7 @@ const anthropic = new Anthropic({
     const msg = await anthropic.messages.create({
         model: "claude-3-sonnet-20240229",
         max_tokens: 2500,
-        messages: [{ role: "user", content: text }],
+        messages: [{ role: "user", content: prompt }],
       });
       console.log(msg);
       return msg;
