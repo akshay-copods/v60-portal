@@ -6,6 +6,47 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <script src="https://cdn.jsdelivr.net/gh/google/code-prettify@master/loader/run_prettify.js"></script>
+    <style>
+        body {
+          font-family: Arial, sans-serif;
+          padding: 20px;
+        }
+      
+        #inpFile {
+          margin-bottom: 10px;
+        }
+      
+        #btnUpload {
+          cursor: pointer;
+          padding: 10px 15px;
+          background-color: #4CAF50;
+          color: white;
+          border: none;
+          border-radius: 5px;
+          margin-bottom: 20px;
+        }
+      
+        #resultText, #resultJson, #resultAssessmentJson {
+          width: 100%;
+          max-width: 600px;
+          margin-bottom: 20px;
+          border: 1px solid #ddd;
+          font-family: Consolas, 'Courier New', monospace;
+          padding: 10px;
+          border-radius: 5px;
+          background-color: #f9f9f9;
+        }
+      
+        .prettyprint {
+          background-color: #f0f0f0;
+          border: 1px solid #ddd;
+          overflow: auto;
+        }
+      
+        .lang-json {
+          color: #d14;
+        }
+      </style>
 </head>
 <body>
     <input type="file" id="inpFile">
@@ -22,7 +63,7 @@
         const resultText = document.getElementById("resultText");
         const resultJson = document.getElementById("resultJson");
         const resultAssessmentJson = document.getElementById("resultAssessmentJson");
-
+let extractedModule = ''
         resultJson.textContent = "Your JSON will appear here...";
         resultAssessmentJson.textContent = "Your Assessment JSON will appear here...";
         btnUpload.addEventListener("click", () => {
@@ -37,6 +78,7 @@
                 return response.text();
             }).then(extractedText => {
                 resultText.value = extractedText.trim();
+                extractedModule = extractedText
                 return extractedText;
             }).then((extractedText) => {
                 fetch("/extract-json", {
@@ -49,18 +91,22 @@
                     return response.text();
                 }).then(extractedJson => {
                     resultJson.textContent = extractedJson
-                });
-                fetch("/extract-assessment", {
+                }).then(()=> {
+                    // Fetch assessment JSON
+                    console.log('fetching assessment', extractedModule);
+                    fetch("/extract-assessment", {
                     method: "post",
                     headers : {
                         'Content-Type': 'application/json'
                     },
-                    body:JSON.stringify({ extractedText})
+                    body:JSON.stringify({ extractedModule})
                 }).then(response => {
                     return response.text();
                 }).then(extractedAssessmentJson => {
                     resultAssessmentJson.textContent = extractedAssessmentJson
                 });
+                })
+               
             });
         });
     </script>

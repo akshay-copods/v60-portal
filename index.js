@@ -13,7 +13,7 @@ const anthropic = new Anthropic({
     apiKey: process.env.CLAUDE_API_KEY, // defaults to process.env["ANTHROPIC_API_KEY"]
   });
   async function callClaude(text) {
-    const prompt =  `Create 5 training modules, where each module should be at least 350 words from this text ${text}`
+    const prompt =  `Create 5 training modules, where each module should be at least 250 words from this text ${text}`
     const msg = await anthropic.messages.create({
         model: CLAUDE_MODEL,
         max_tokens: 3500,
@@ -48,6 +48,7 @@ const anthropic = new Anthropic({
   `
   const ASSESSMENT_JSON =`{ 
   "assessments": [{
+    "moduleName": "module name",
     "estimatedTime": "estimated time in minutes to complete the assessment",
     "questions": [
       {
@@ -80,9 +81,8 @@ const anthropic = new Anthropic({
       return msg;
   }
   async function callClaudeForAssessment(text) {
-    const prompt = `Create an assessment based on the given content. As per the json format generate few mcq type questions related to content for each module. JSON format should be in the following structure: ${ASSESSMENT_JSON}
+    const prompt = `Create an mcq assessment for each module in the given content. JSON format should be in the following structure: ${ASSESSMENT_JSON}
     Just return JSON and don't send any other message.
-     
     Here is the text to convert in JSON: ${text}`
     const msg = await anthropic.messages.create({
         model: CLAUDE_MODEL,
@@ -114,8 +114,9 @@ const text = req.body.extractedText;
 });
 
 app.post("/extract-assessment", (req, res) => {
-      
-     const text = req.body.extractedText;
+     console.log("0000000",req.body); 
+     const text = req.body.extractedModule;
+
                 callClaudeForAssessment(text).then((msg) => {
                 res.send(JSON.parse(msg.content[0].text))
           });
