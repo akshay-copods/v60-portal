@@ -2,113 +2,64 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
-    <script src="https://cdn.jsdelivr.net/gh/google/code-prettify@master/loader/run_prettify.js"></script>
-    <style>
-        body {
-          font-family: Arial, sans-serif;
-          padding: 20px;
-        }
-      
-        #inpFile {
-          margin-bottom: 10px;
-        }
-      
-        #btnUpload {
-          cursor: pointer;
-          padding: 10px 15px;
-          background-color: #4CAF50;
-          color: white;
-          border: none;
-          border-radius: 5px;
-          margin-bottom: 20px;
-        }
-      
-        #resultText, #resultJson, #resultAssessmentJson {
-          width: 100%;
-          max-width: 600px;
-          margin-bottom: 20px;
-          border: 1px solid #ddd;
-          font-family: Consolas, 'Courier New', monospace;
-          padding: 10px;
-          border-radius: 5px;
-          background-color: #f9f9f9;
-        }
-      
-        .prettyprint {
-          background-color: #f0f0f0;
-          border: 1px solid #ddd;
-          overflow: auto;
-        }
-      
-        .lang-json {
-          color: #d14;
-        }
-      </style>
+    <link rel="stylesheet" href="style.css">
+    <script src="https://cdn.jsdelivr.net/npm/@google/code-prettify/loader/run_prettify.js"></script>
 </head>
 <body>
-    <input type="file" id="inpFile">
-    <button type="button" id="btnUpload">Upload</button>
-    <br>
-    <br>
-    <textarea style="width: 300px; height: 150px;" id="resultText" placeholder="Your PDF text will appear here..."></textarea>
-    <pre class="prettyprint lang-json" id="resultJson"></pre>
-    <pre class="prettyprint lang-json" id="resultAssessmentJson"></pre>
+     <div class="container">
+        <input type="file" id="inpFile">
+        <button id="btnUpload">Upload</button>
+        <textarea id="resultText" placeholder="Your PDF text will appear here..."></textarea>
+        <pre class="prettyprint lang-json" id="resultJson">Your JSON will appear here...</pre>
+        <pre class="prettyprint lang-json" id="resultAssessmentJson">Your Assessment JSON will appear here...</pre>
+    </div>
 
     <script>
-        const inpFile = document.getElementById("inpFile");
-        const btnUpload = document.getElementById("btnUpload");
-        const resultText = document.getElementById("resultText");
-        const resultJson = document.getElementById("resultJson");
-        const resultAssessmentJson = document.getElementById("resultAssessmentJson");
-let extractedModule = ''
-        resultJson.textContent = "Your JSON will appear here...";
-        resultAssessmentJson.textContent = "Your Assessment JSON will appear here...";
-        btnUpload.addEventListener("click", () => {
-            const formData = new FormData();
+        document.addEventListener("DOMContentLoaded", () => {
+    const inpFile = document.getElementById("inpFile");
+    const btnUpload = document.getElementById("btnUpload");
+    const resultText = document.getElementById("resultText");
+    const resultJson = document.getElementById("resultJson");
+    const resultAssessmentJson = document.getElementById("resultAssessmentJson");
 
-            formData.append("pdfFile", inpFile.files[0]);
+    async function fetchText() {
+        const formData = new FormData();
+        formData.append("pdfFile", inpFile.files[0]);
 
-            fetch("/extract-text", {
-                method: "post",
-                body: formData
-            }).then(response => {
-                return response.text();
-            }).then(extractedText => {
-                resultText.value = extractedText.trim();
-                extractedModule = extractedText
-                return extractedText;
-            }).then((extractedText) => {
-                fetch("/extract-json", {
-                    method: "post",
-                    headers : {
-                        'Content-Type': 'application/json'
-                    },
-                    body:JSON.stringify({ extractedText})
-                }).then(response => {
-                    return response.text();
-                }).then(extractedJson => {
-                    resultJson.textContent = extractedJson
-                }).then(()=> {
-                    // Fetch assessment JSON
-                    console.log('fetching assessment', extractedModule);
-                    fetch("/extract-assessment", {
-                    method: "post",
-                    headers : {
-                        'Content-Type': 'application/json'
-                    },
-                    body:JSON.stringify({ extractedModule})
-                }).then(response => {
-                    return response.text();
-                }).then(extractedAssessmentJson => {
-                    resultAssessmentJson.textContent = extractedAssessmentJson
-                });
-                })
-               
-            });
+        const response = await fetch("/extract-text", {
+            method: "POST",
+            body: formData
         });
+        return response.text();
+    }
+
+    async function fetchJson(url, data) {
+        const response = await fetch(url, {
+            method: "POST",
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify(data)
+        });
+        return response.text();
+    }
+
+    btnUpload.addEventListener("click", async () => {
+        try {
+            const extractedText = await fetchText();
+            resultText.value = extractedText.trim();
+
+            const extractedJson = await fetchJson("/extract-json", { extractedText });
+            resultJson.textContent = extractedJson;
+
+            const extractedAssessmentJson = await fetchJson("/extract-assessment", { extractedText });
+            resultAssessmentJson.textContent = extractedAssessmentJson;
+        } catch (error) {
+            console.error("Error during fetch operations:", error);
+        }
+    });
+});
+
     </script>
 </body>
 </html>

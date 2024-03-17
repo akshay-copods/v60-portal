@@ -13,10 +13,10 @@ const anthropic = new Anthropic({
     apiKey: process.env.CLAUDE_API_KEY, // defaults to process.env["ANTHROPIC_API_KEY"]
   });
   async function callClaude(text) {
-    const prompt =  `Create 5 training modules, where each module should be at least 250 words from this text ${text}`
+    const prompt =  `Create 3 training modules, where each module should be at max 100 words from this text ${text}`
     const msg = await anthropic.messages.create({
         model: CLAUDE_MODEL,
-        max_tokens: 3500,
+        max_tokens: 4000,
         messages: [{ role: "user", content: prompt }],
       });
       console.log(msg);
@@ -47,7 +47,7 @@ const anthropic = new Anthropic({
   }
   `
   const ASSESSMENT_JSON =`{ 
-  "assessments": [{
+  "assessment": {
     "moduleName": "module name",
     "estimatedTime": "estimated time in minutes to complete the assessment",
     "questions": [
@@ -65,7 +65,8 @@ const anthropic = new Anthropic({
         "answer": "Correct option id"
       }
     ]
-  }]}`
+  }
+}`
  
   async function callClaudeForJson(text) {
     const prompt = `Convert the given content into JSON format. JSON format should be in the following structure: ${MODULE_JSON}
@@ -74,7 +75,7 @@ const anthropic = new Anthropic({
     Here is the text to convert in JSON: ${text}`
     const msg = await anthropic.messages.create({
         model: CLAUDE_MODEL,
-        max_tokens: 3500,
+        max_tokens: 4000,
         messages: [{ role: "user", content: prompt }],
       });
       console.log(msg);
@@ -86,7 +87,7 @@ const anthropic = new Anthropic({
     Here is the text to convert in JSON: ${text}`
     const msg = await anthropic.messages.create({
         model: CLAUDE_MODEL,
-        max_tokens: 3500,
+        max_tokens: 4000,
         messages: [{ role: "user", content: prompt }],
       });
       console.log(msg);

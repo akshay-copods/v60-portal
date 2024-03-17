@@ -1,0 +1,48 @@
+:root {
+    --primary-color: #4CAF50;
+    --text-color: #333;
+    --background-color: #f9f9f9;
+    --border-color: #ddd;
+    --font-family: Arial, sans-serif;
+    --font-family-monospace: Consolas, 'Courier New', monospace;
+}
+
+body {
+    font-family: var(--font-family);
+    padding: 20px;
+    background-color: var(--background-color);
+    color: var(--text-color);
+}
+
+.container {
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+#inpFile {
+    margin-bottom: 10px;
+}
+
+#btnUpload {
+    cursor: pointer;
+    padding: 10px 15px;
+    background-color: var(--primary-color);
+    color: white;
+    border: none;
+    border-radius: 5px;
+    margin-bottom: 20px;
+}
+
+textarea, .prettyprint {
+    width: 100%;
+    margin-bottom: 20px;
+    border: 1px solid var(--border-color);
+    padding: 10px;
+    border-radius: 5px;
+    font-family: var(--font-family-monospace);
+    background-color: var(--background-color);
+}
+
+.prettyprint {
+    overflow: auto;
+}
