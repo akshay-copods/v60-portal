@@ -13,7 +13,7 @@ const anthropic = new Anthropic({
     apiKey: process.env.CLAUDE_API_KEY, // defaults to process.env["ANTHROPIC_API_KEY"]
   });
   async function callClaude(text) {
-    const prompt =  `Create 3 training modules, where each module should be at max 100 words from this text ${text}`
+    const prompt =  `Create 2 training modules, where each module should be at max 50 words from this text ${text}`
     const msg = await anthropic.messages.create({
         model: CLAUDE_MODEL,
         max_tokens: 4000,

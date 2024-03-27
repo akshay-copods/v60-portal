@@ -45,21 +45,28 @@
     }
 
     btnUpload.addEventListener("click", async () => {
-        try {
-            const extractedText = await fetchText();
-            resultText.value = extractedText.trim();
+    const loaderOverlay = document.querySelector('.loader-overlay');
+    try {
+        loaderOverlay.style.display = 'flex'; // Show loader
+        const extractedText = await fetchText();
+        resultText.value = extractedText.trim();
 
-            const extractedJson = await fetchJson("/extract-json", { extractedText });
-            resultJson.textContent = extractedJson;
+        const extractedJson = await fetchJson("/extract-json", { extractedText });
+        resultJson.textContent = extractedJson;
 
-            const extractedAssessmentJson = await fetchJson("/extract-assessment", { extractedText });
-            resultAssessmentJson.textContent = extractedAssessmentJson;
-        } catch (error) {
-            console.error("Error during fetch operations:", error);
-        }
-    });
+        const extractedAssessmentJson = await fetchJson("/extract-assessment", { extractedText });
+        resultAssessmentJson.textContent = extractedAssessmentJson;
+    } catch (error) {
+        console.error("Error during fetch operations:", error);
+    } finally {
+        loaderOverlay.style.display = 'none'; // Hide loader after operations
+    }
+});
 });
 
     </script>
+    <div class="loader-overlay">
+    <div class="loader"></div>
+</div>
 </body>
 </html>
