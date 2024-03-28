@@ -13,7 +13,7 @@ const anthropic = new Anthropic({
     apiKey: process.env.CLAUDE_API_KEY, // defaults to process.env["ANTHROPIC_API_KEY"]
   });
   async function callClaude(text) {
-    const prompt =  `Create 2 training modules, where each module should be at max 50 words from this text ${text}`
+    const prompt =  `Create 2 training modules and also in training module give the image links from documents, where each module should be at max 50 words from this text ${text}`
     const msg = await anthropic.messages.create({
         model: CLAUDE_MODEL,
         max_tokens: 4000,
@@ -37,7 +37,8 @@ const anthropic = new Anthropic({
             "id": "ModuleContent index",
             "title": "Title of the topic",
             "titleDescription": "One liner description of the topic",
-            "image": "image url related to the topic",
+            "image": "image link which is given in the document",
+            "video": "video link which is given in the document",
             "content": "This is the content of the module broken down into smaller parts, must have minimum 200 words"
           }
         ],
